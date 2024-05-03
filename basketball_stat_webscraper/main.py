@@ -16,6 +16,7 @@ class main:
 
   locator = Locators(driver)
   locator.search().send_keys("PPG" + Keys.ENTER )
+
   count=1
   table = locator.tableOfNames()
   for t in table:
@@ -25,7 +26,7 @@ class main:
     if count == 75:
       break
     count+=1
-
+    
   db.commit()
 
   time.sleep(3)
