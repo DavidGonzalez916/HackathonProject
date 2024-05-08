@@ -1,27 +1,23 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 class Locators:
 
   def __init__(self, driver):
     self.driver = driver
   
-  searchBar = (By.CSS_SELECTOR, ".ac-input.completely")
-  table = (By.XPATH, "(//table[@id='tot'])//a")
-  pts = (By.XPATH, "//div[@class='p1']//div[2]/p[2]")
-  trb = (By.XPATH, "//div[@class='p1']//div[3]/p[2]")
-  ast = (By.XPATH, "//div[@class='p1']//div[4]/p[2]")
+  offense = (By.XPATH, "//a[@href='/nba/stats/player']")
+  dropdownSelect = (By.XPATH, "(//div[@class='flex flex-wrap']/div/div/select)[1]")
+  getNames = (By.XPATH, "//td/div")
+ 
 
-  def search(self):
-    return self.driver.find_element(*Locators.searchBar)
+  def offensiveLeaders(self):
+    return self.driver.find_element(*Locators.offense)
   
   def tableOfNames(self):
-    return self.driver.find_elements(*Locators.table)
+    return self.driver.find_elements(*Locators. getNames)
   
-  def points(self):
-    return self.driver.find_element(*Locators.pts)
+  def season(self):
+    return Select(self.driver.find_element(*Locators.dropdownSelect))
+ 
   
-  def rebounds(self):
-    return self.driver.find_element(*Locators.trb)
-  
-  def assists(self):
-    return self.driver.find_element(*Locators.ast)
